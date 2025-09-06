@@ -1,0 +1,134 @@
+<!-- Section Mis Tarjetas Bancarias - Estilo Tarjeta Realista LCL -->
+ <link rel="icon" href="logo.svg" type="image/x-icon">
+<div class="cartes-container">
+    <h2>Mis tarjetas bancarias</h2>
+
+    <div class="carte-bancaire">
+        <div class="puce"></div>
+        <div class="logo-banque">LCL</div>
+        <div class="numero-carte">**** **** **** 4528</div>
+        <div class="nom-titulaire">MARIA A. YEBEN</div>
+        <div class="expiration">12/27</div>
+        <div class="solde-carte">47.283.452 €</div>
+        <div class="reseau">💳 Visa Premier</div>
+    </div>
+
+    <div class="carte-bancaire bloque">
+        <div class="puce"></div>
+        <div class="logo-banque">LCL</div>
+        <div class="numero-carte">**** **** **** 8934</div>
+        <div class="nom-titulaire">MARIA A. YEBEN</div>
+        <div class="expiration">06/25</div>
+        <div class="solde-carte">0,00 €</div>
+        <div class="reseau">💳 Mastercard</div>
+    </div>
+
+    <button class="btn-gerer">Gestionar mis tarjetas</button>
+</div>
+
+<style>
+.cartes-container {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 25px;
+    border-radius: 6px;
+    max-width: 750px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.cartes-container h2 {
+    background-color: #00205B; /* Bleu LCL */
+    color: white;
+    padding: 10px 15px;
+    margin: -25px -25px 20px -25px;
+    border-radius: 6px 6px 0 0;
+    font-size: 18px;
+}
+
+.carte-bancaire {
+    position: relative;
+    width: 350px;
+    height: 200px;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 15px auto;
+    color: white;
+    background: linear-gradient(135deg, #00205B, #0047BA);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.carte-bancaire.bloque {
+    filter: grayscale(80%);
+    opacity: 0.8;
+}
+
+.puce {
+    width: 40px;
+    height: 30px;
+    background: gold;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.logo-banque {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-weight: bold;
+    font-size: 22px;
+    color: #FDB913;
+}
+
+.numero-carte {
+    font-size: 20px;
+    letter-spacing: 3px;
+    margin-top: 30px;
+}
+
+.nom-titulaire {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+.expiration {
+    font-size: 14px;
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+}
+
+.solde-carte {
+    position: absolute;
+    bottom: 50px;
+    left: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #FDB913;
+}
+
+.reseau {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-weight: bold;
+}
+
+.btn-gerer {
+    background-color: #FDB913;
+    color: #00205B;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 10px auto;
+}
+
+.btn-gerer:hover {
+    background-color: #e0a800;
+}
+</style>

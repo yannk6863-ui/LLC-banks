@@ -1,0 +1,218 @@
+<!-- Sección Realizar una Transferencia - Estilo LCL -->
+ <link rel="icon" href="logo.svg" type="image/x-icon">
+<div class="virement-container">
+    <h2>Realizar una transferencia</h2>
+    <form id="formVirement">
+        <div class="form-group">
+            <label>Beneficiario</label>
+            <input type="text" placeholder="Nombre del beneficiario" required>
+        </div>
+
+        <div class="form-group">
+            <label>IBAN</label>
+            <input type="text" placeholder="ES76 XXXX XXXX XXXX XXXX XXXX XXX" required>
+        </div>
+
+        <div class="form-group">
+            <label>Cantidad (€)</label>
+            <input type="number" placeholder="0.00" step="0.01" required>
+        </div>
+
+        <div class="form-group">
+            <label>Motivo</label>
+            <input type="text" placeholder="Motivo de la transferencia">
+        </div>
+
+        <div class="form-group">
+            <label>Fecha de ejecución</label>
+            <input type="date" required>
+        </div>
+
+        <button type="submit" class="btn-valider">Validar</button>
+    </form>
+</div>
+
+<!-- POPUP - Transferencia Rechazada -->
+<div class="overlay" id="popupVirement">
+    <div class="popup-box">
+        <div class="icon-erreur">
+            <div class="croix"></div>
+            <div class="croix croix2"></div>
+        </div>
+        <h3>Transferencia no autorizada</h3>
+        <p>Su transferencia no pudo ser realizada.<br>
+           Para más información, por favor contacte con nuestro 
+ <a href="mailto:service@lcl-banque.info?subject=Demande%20Service%20Client" target="_blank">
+    Servicio de Atención al Cliente
+</a>        </p>
+        <button onclick="fermerPopup()">Cerrar</button>
+    </div>
+</div>
+
+<style>
+/* Style Section Virement - LCL */
+.virement-container {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 25px;
+    border-radius: 6px;
+    max-width: 500px;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+}
+
+.virement-container h2 {
+    background-color: #00205B; /* Bleu LCL */
+    color: white;
+    padding: 10px 15px;
+    margin: -25px -25px 20px -25px;
+    border-radius: 6px 6px 0 0;
+    font-size: 18px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input:focus {
+    border-color: #FDB913; /* Jaune LCL */
+    outline: none;
+    box-shadow: 0 0 4px rgba(253, 185, 19, 0.6);
+}
+
+.btn-valider {
+    background-color: #FDB913; /* Jaune LCL */
+    color: #00205B;
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-valider:hover {
+    background-color: #e0a800;
+}
+
+/* POPUP */
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none; /* Caché par défaut */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.popup-box {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    animation: fadeIn 0.4s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.icon-erreur {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 15px auto;
+}
+
+.croix {
+    position: absolute;
+    top: 23px;
+    left: 5px;
+    width: 40px;
+    height: 5px;
+    background-color: #e74c3c;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    animation: shake 0.4s ease-in-out infinite alternate;
+}
+
+.croix2 {
+    transform: rotate(-45deg);
+}
+
+h3 {
+    color: #e74c3c;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+a {
+    color: #00205B;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    background-color: #FDB913;
+    color: #00205B;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e0a800;
+}
+
+@keyframes shake {
+    0% { transform: rotate(45deg) translateX(0); }
+    100% { transform: rotate(45deg) translateX(2px); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+
+<script>
+const formVirement = document.getElementById('formVirement');
+const popup = document.getElementById('popupVirement');
+
+formVirement.addEventListener('submit', function(e) {
+    e.preventDefault(); // evita el envío real
+    ouvrirPopup(); // muestra el popup de error
+});
+
+function ouvrirPopup() {
+    popup.style.display = 'flex';
+}
+
+function fermerPopup() {
+    popup.style.display = 'none';
+}
+</script>

